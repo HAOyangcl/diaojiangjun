@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="keywords" content="Diaojiang TV,电视直播,点播播放器,安卓TV,手机播放器,apk下载">
+    <meta name="description" content="Diaojiang TV - 跨端影音聚合播放器，支持电视大屏和手机，通过外部配置灵活拓展资源。">
+    <title>Diaojiang TV · 跨端影音聚合播放器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #f5f7fc 0%, #eef2f6 100%);
+            color: #1a2634;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.92);
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.02);
+            padding: 2rem 2rem 2.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #1e2a3a, #0f1720);
+            border-radius: 22px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 12px 18px -8px rgba(0,0,0,0.2);
+        }
+
+        .app-icon span {
+            font-size: 44px;
+            font-weight: 600;
+            color: white;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            background: linear-gradient(115deg, #0b2b3b, #1c4e6e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #3a546d;
+            margin-bottom: 1rem;
+            font-weight: 450;
+        }
+
+        .badge-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.7rem;
+            margin: 1.5rem 0 0.8rem;
+        }
+
+        .badge {
+            background: #eef3fc;
+            padding: 0.3rem 1rem;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #1f6392;
+            border: 1px solid #cbdde9;
+        }
+
+        .screenshots {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.6rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .shot {
+            flex: 1;
+            min-width: 150px;
+            max-width: 200px;
+            background: #ffffffcc;
+            border-radius: 28px;
+            padding: 0.8rem 0.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            border: 1px solid #ffffff;
+        }
+
+        .shot:hover {
+            transform: translateY(-4px);
+            background: white;
+        }
+
+        .mock-screen {
+            background: #1f2c38;
+            border-radius: 20px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2), 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .mock-screen span {
+            font-size: 2rem;
+            opacity: 0.8;
+        }
+
+        .shot p {
+            font-weight: 500;
+            color: #1f3b4c;
+            font-size: 0.85rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.2rem;
+            margin: 2rem 0 0.5rem;
+        }
+
+        .feature-item {
+            background: #f8fafd;
+            border-radius: 1.5rem;
+            padding: 1rem 1.2rem;
+            border-left: 4px solid #3b82f6;
+            font-weight: 500;
+            color: #1e2f3c;
+        }
+
+        .feature-item strong {
+            color: #0f5b8c;
+        }
+
+        /* 双按钮下载区域 */
+        .download-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            padding: 0.9rem 1.8rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-github {
+            background: #0b2a3e;
+            color: white;
+        }
+
+        .btn-github:hover {
+            background: #124e72;
+            transform: scale(1.02);
+        }
+
+        .btn-cn {
+            background: #e6492d;
+            color: white;
+        }
+
+        .btn-cn:hover {
+            background: #c43d1f;
+            transform: scale(1.02);
+        }
+
+        .apk-list {
+            background: #eef2f8;
+            border-radius: 1.5rem;
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .apk-list summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: #1f6392;
+        }
+
+        .apk-list a {
+            color: #0f5b8c;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .apk-list a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #5c6f87;
+            border-top: 1px solid #cfdfed;
+            padding-top: 2rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 640px) {
+            .card {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.7rem;
+            }
+            .shot {
+                min-width: 120px;
+            }
+            .download-btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 主卡片：应用信息 -->
+    <div class="card">
+        <div class="hero">
+            <div class="app-icon"><span>📺</span></div>
+            <h1>Diaojiang TV</h1>
+            <div class="tagline">跨端影音聚合 · 直播点播双核引擎</div>
+            <div class="badge-group">
+                <span class="badge">📱 安卓手机</span>
+                <span class="badge">📺 Android TV</span>
+                <span class="badge">🎬 爬虫扩展</span>
+                <span class="badge">⚡ ExoPlayer</span>
+                <span class="badge">📡 直播回看</span>
+            </div>
+        </div>
+
+        <!-- 模拟截图区域 -->
+        <div class="screenshots">
+            <div class="shot">
+                <div class="mock-screen"><span>📱 首页推荐</span></div>
+                <p>手机/电视自适应</p>
+            </div>
+            <div class="shot">
+                <div class="mock-screen"><span>🎥 详情页</span></div>
+                <p>多源切换 · 剧集收藏</p>
+            </div>
+            <div class="shot">
+                <div class="mock-screen"><span>📡 直播EPG</span></div>
+                <p>节目预告·时移回看</p>
+            </div>
+            <div class="shot">
+                <div class="mock-screen"><span>⚙️ 配置中心</span></div>
+                <p>接口 · 代理 · 广告拦截</p>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-item"><strong>🎞️ 强大播放器</strong> — Media3 + FFmpeg，硬解软解智能切换</div>
+            <div class="feature-item"><strong>🧩 三语言爬虫</strong> — Java / JS / Python 扩展资源</div>
+            <div class="feature-item"><strong>📺 直播全能</strong> — M3U/TXT/JSON，支持XMLTV预告+回看</div>
+            <div class="feature-item"><strong>🔍 智能换源</strong> — 解析线路→播放源→跨站检索，观影不中断</div>
+            <div class="feature-item"><strong>🌐 网络工具链</strong> — DNS加密 / 全局代理 / 域名黑名单</div>
+            <div class="feature-item"><strong>📲 远程控制</strong> — 本地HTTP服务，投屏/弹幕/字幕推送</div>
+        </div>
+
+        <!-- 双下载按钮：国际 + 国内 -->
+        <div class="download-section">
+            <a href="https://github.com/Diaojiangjun/diaojiang-tv/releases" class="download-btn btn-github" target="_blank" rel="noopener noreferrer">
+                🌐 GitHub 下载 (国际)
+            </a>
+            <a href="https://pan.baidu.com/s/1PC-NeeqAdx6ZZc6EKSkHtA?pwd=pyxh" class="download-btn btn-cn" target="_blank" rel="noopener noreferrer">
+                百度网盘
+            </a>
+        </div>
+        <p style="text-align: center; font-size: 0.75rem; color: #4e6a7c;">支持 Android 7.0+ | 电视/手机通用安装包</p>
+
+        <!-- 详细APK列表（根据你的仓库结构） -->
+        <details class="apk-list">
+            <summary>📦 所有安装包列表 (点击展开)</summary>
+            <p style="margin: 12px 0 6px 0;"><strong>电视版 (Leanback)</strong></p>
+            <ul style="margin-left: 1.5rem;">
+                <li><a href="https://raw.githubusercontent.com/HAOyangcl/diaojiangjun/main/apk/leanback-arm64_v8a-hy-1.0.0.apk">leanback-arm64_v8a-hy-1.0.0.apk</a> (64位电视/盒子)</li>
+                <li><a href="https://raw.githubusercontent.com/HAOyangcl/diaojiangjun/main/apk/leanback-armebai_v7a-hy-1.0.0.apk">leanback-armebai_v7a-hy-1.0.0.apk</a> (32位电视/盒子)</li>
+            </ul>
+            <p style="margin: 12px 0 6px 0;"><strong>手机版 (Mobile)</strong></p>
+            <ul style="margin-left: 1.5rem;">
+                <li><a href="https://raw.githubusercontent.com/HAOyangcl/diaojiangjun/main/apk/mobile-arm64_v8a-hy-1.0.0.apk">mobile-arm64_v8a-hy-1.0.0.apk</a> (64位手机)</li>
+                <li><a href="https://raw.githubusercontent.com/HAOyangcl/diaojiangjun/main/apk/mobile-armebai_v7a-hy-1.0.0.apk">mobile-armebai_v7a-hy-1.0.0.apk</a> (32位手机)</li>
+            </ul>
+            <p style="font-size: 0.75rem; margin-top: 8px;">⚠️ 国内用户若无法下载，请使用上面的「国内高速下载」按钮</p>
+        </details>
+
+        <div class="link-area" style="background:#eef2f8; border-radius:1.5rem; padding:1rem; margin-top:1.5rem;">
+            🔗 项目主页：<strong>https://github.com/Diaojiangjun/diaojiang-tv</strong><br>
+            📦 备用下载源：<strong>https://github.com/HAOyangcl/diaojiangjun/tree/main/apk</strong>
+        </div>
+    </div>
+
+    <!-- 审核说明卡片 -->
+    <div class="card" style="background: #fefef7;">
+        <h2 style="font-size: 1.4rem; margin-bottom: 1rem;">📌 关于应用 / About this App</h2>
+        <p><strong>Diaojiang TV</strong> 是一款纯粹的视频播放器工具，<strong>本身不内置任何侵权资源</strong>。用户可通过<strong>外部自定义配置</strong>（JSON / txt 接口）添加点播站点或直播源，播放器仅负责解码与播放。所有内容来源由用户自行配置，符合“通用播放器”定义。</p>
+        <p style="margin-top: 0.8rem;">✅ 适用于 Android TV 盒子、智能电视、安卓手机。<br>
+        ✅ 开源项目，无后门，无强制权限。<br>
+        ✅ 本页面向广告平台展示 App 合法用途及界面风格。</p>
+        <p style="margin-top: 0.8rem;">📢 本页面仅用于 <strong>Adsterra 广告平台审核及网站/应用入口验证</strong>，真实流量场景均在 App 内部展示广告位 (Banner/插屏等)。</p>
+    </div>
+
+    <!-- 隐私政策卡片 -->
+    <div class="card">
+        <h2 style="font-size: 1.3rem; margin-bottom: 0.8rem;">🍪 隐私与广告政策</h2>
+        <p>Diaojiang TV 不收集用户个人隐私数据。广告展示遵守 Adsterra 政策，在应用内提供关闭个性化广告的选项。本应用仅供学习交流，请遵守当地法律法规。</p>
+        <p style="margin-top: 0.8rem;">📧 联系方式：<strong>diaojiangtv@example.com</strong> （请替换为你的真实邮箱）</p>
+    </div>
+
+    <footer>
+        © 2026 Diaojiang TV | 开源项目 · 仅供学习交流 | 本页面符合 Adsterra 提交规范
+    </footer>
+</div>
+</body>
+</html>
